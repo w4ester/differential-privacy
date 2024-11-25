@@ -17,6 +17,7 @@
 package com.google.privacy.differentialprivacy;
 
 import static com.google.common.truth.Truth.assertThat;
+import java.security.SecureRandom;
 import static org.junit.Assert.assertThrows;
 
 import com.google.common.collect.ImmutableList;
@@ -28,7 +29,7 @@ import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public final class SamplingUtilTest {
-  private static final Random random = new Random();
+  private static final Random random = new SecureRandom();
   private static final int NUM_SAMPLES = 100000;
 
   @Test

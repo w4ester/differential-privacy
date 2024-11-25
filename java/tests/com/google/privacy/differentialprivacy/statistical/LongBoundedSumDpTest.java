@@ -31,6 +31,7 @@ import com.google.privacy.differentialprivacy.testing.VotingUtil;
 import com.google.protobuf.TextFormat;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.security.SecureRandom;
 import java.util.Random;
 import java.util.function.Supplier;
 import org.junit.Test;
@@ -68,11 +69,11 @@ public final class LongBoundedSumDpTest {
     double delta;
     switch (samplingParameters.getNoiseType()) {
       case LAPLACE:
-        noise = TestNoiseFactory.createLaplaceNoise(new Random());
+        noise = TestNoiseFactory.createLaplaceNoise(new SecureRandom());
         delta = 0.0;
         break;
       case GAUSSIAN:
-        noise = TestNoiseFactory.createGaussianNoise(new Random());
+        noise = TestNoiseFactory.createGaussianNoise(new SecureRandom());
         delta = samplingParameters.getDelta();
         break;
       default:

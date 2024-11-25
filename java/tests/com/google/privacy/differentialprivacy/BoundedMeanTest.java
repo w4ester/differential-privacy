@@ -20,6 +20,7 @@ import static com.google.common.collect.ImmutableList.toImmutableList;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assertWithMessage;
 import static java.lang.Double.NaN;
+import java.security.SecureRandom;
 import static java.util.stream.Collectors.joining;
 import static org.junit.Assert.assertThrows;
 import static org.mockito.ArgumentMatchers.anyDouble;
@@ -337,7 +338,7 @@ public class BoundedMeanTest {
   public void computeResult_resultAlwaysInsideProvidedBoundaries() {
     int datasetSize = 10;
     for (int i = 0; i < 100; ++i) {
-      Random random = new Random();
+      Random random = new SecureRandom();
       double lower = random.nextDouble() * 100;
       double upper = lower + random.nextDouble() * 100;
       BoundedMean mean =
