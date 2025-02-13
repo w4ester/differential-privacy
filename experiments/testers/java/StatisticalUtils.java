@@ -14,6 +14,7 @@
 // limitations under the License.
 
 import static com.google.common.truth.Truth.assertThat;
+import io.github.pixee.security.BoundedLineReader;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 import com.google.privacy.differentialprivacy.testing.StatisticalTestsUtil;
@@ -34,7 +35,7 @@ public class StatisticalUtils {
 
 	  try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 	    String line;
-	    while ((line = br.readLine()) != null) {
+	    while ((line = BoundedLineReader.readLine(br, 5_000_000)) != null) {
 	    	counter++;
 				int i = Double.valueOf(line).intValue();
 	      Long dpcount = Long.valueOf(i);
